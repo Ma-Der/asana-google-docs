@@ -11,6 +11,7 @@ class AsanaRouter {
   createRoutes() {
     this.router.get('/', AsanaController.authorize);
     this.router.get('/oauth_callback', AsanaController.redirectCallback);
+    this.router.get('/tasks', AsanaController.getTasks);
   }
 }
 

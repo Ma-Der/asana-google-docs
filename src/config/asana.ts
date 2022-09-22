@@ -1,7 +1,7 @@
 import Asana from 'asana';
 import { asanaClientId, asanaClientSecret, asanaRedirectUri } from './envVar';
 
-const createClient = () => {
+export const createClient = () => {
   const client = Asana.Client.create({
     clientId: asanaClientId,
     clientSecret: asanaClientSecret,
@@ -11,4 +11,8 @@ const createClient = () => {
   return client;
 };
 
-export default createClient;
+export const clientUseAuth = (client: Asana.Client, token: string): void => {
+  if (!token) throw Error('Cannot authorize.');
+
+  client.useOauth({ credentials: token });
+};

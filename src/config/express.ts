@@ -2,6 +2,7 @@ import express, { urlencoded, Express } from 'express';
 import cookieParser from 'cookie-parser';
 import baseRouter from '@router/baseRouter';
 import asanaRouter from '@router/asanaRouter';
+import googleRouter from '@router/googleRouter';
 import errorHandler from '@middleware/errorHandler';
 import { port } from './envVar';
 
@@ -14,6 +15,7 @@ export const initializeServer = (): express.Application => {
 
   app.use('/', baseRouter.router);
   app.use('/asana', asanaRouter.router);
+  app.use('/google', googleRouter.router);
 
   app.use(errorHandler);
 
